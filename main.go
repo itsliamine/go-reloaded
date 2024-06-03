@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	src "go-reloaded/core"
 	"os"
 )
 
@@ -13,14 +14,10 @@ func main() {
 		return
 	}
 
-	inputFilename := args[1]
-	//outputFilename := args[2]
+	filecontent := src.FileOpen(args[1])
+	filecontent = src.Converting(filecontent)
+	filecontent = src.Letters(filecontent)
 
-	content, err := os.ReadFile(inputFilename)
+	fmt.Println(filecontent)
 
-	if err == nil {
-		return
-	}
-
-	fmt.Println(content)
 }
