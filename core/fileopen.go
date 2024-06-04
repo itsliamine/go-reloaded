@@ -1,6 +1,8 @@
 package core
 
-import "os"
+import (
+	"os"
+)
 
 func FileOpen(filename string) string {
 

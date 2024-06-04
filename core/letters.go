@@ -1,6 +1,8 @@
 package core
 
-import lib "go-reloaded/utils"
+import (
+	lib "go-reloaded/utils"
+)
 
 func Letters(s string) string {
 	str := ""
@@ -49,8 +51,10 @@ func Letters(s string) string {
 			words[i-1] = lib.ToUpper(words[i-1])
 			words = lib.RemoveSlice(words, i)
 		}
+	}
 
-		str += w
+	for _, w := range words {
+		str += w + " "
 	}
 
 	return str
