@@ -58,10 +58,11 @@ func TestSample4(t *testing.T) {
 }
 
 func TestSample5(t *testing.T) {
-	correct := "As Elton John said: 'I am the most well-known homosexual in the world'"
+	correct := "As Elton John said this: 's I am the most well-known homosexual in the world'. I am exactly how they describe me: 'awesome'"
 	filecontent := src.FileOpen("sample5.txt")
 	filecontent = src.Converting(filecontent)
 	filecontent = src.Letters(filecontent)
+	filecontent = src.Quotes(filecontent)
 	filecontent = src.Punctuation(filecontent)
 	filecontent = src.Vowels(filecontent)
 	if filecontent != correct {
