@@ -17,11 +17,22 @@ func Punctuation(s string) string {
 			words[i-1] += string(words[i][0])
 			words = lib.Insert(words, i+1, words[i][1:])
 			words = lib.RemoveSlice(words, i)
-		} else if lib.Contains(words[i][:len(words[i])-1], ".") {
-			index := lib.Index(words[i][:len(words[i])-1], ".")
-			words[i-1] += words[i][:index+1]
-			words = lib.Insert(words, i+1, words[i][index+1:])
-			words = lib.RemoveSlice(words, i)
+		} else {
+			switch words[i] {
+			case ";":
+				words = Arrange(words, i)
+			case ":":
+				words = Arrange(words, i)
+			case ".":
+				words = Arrange(words, i)
+			case ",":
+				words = Arrange(words, i)
+			case "!":
+				words = Arrange(words, i)
+			case "?":
+				words = Arrange(words, i)
+			}
+
 		}
 
 		for j, char := range words[i] {
@@ -44,4 +55,14 @@ func Punctuation(s string) string {
 	}
 
 	return str
+}
+
+func Arrange(words []string, i int) []string {
+	if lib.Contains(words[i][:len(words[i])-1], ".") {
+		index := lib.Index(words[i][:len(words[i])-1], ".")
+		words[i-1] += words[i][:index+1]
+		words = lib.Insert(words, i+1, words[i][index+1:])
+		words = lib.RemoveSlice(words, i)
+	}
+	return words
 }

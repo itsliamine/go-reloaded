@@ -1,7 +1,6 @@
 package core
 
 import (
-	"fmt"
 	lib "go-reloaded/utils"
 )
 
@@ -29,8 +28,6 @@ func Quotes(s string) string {
 				words = lib.RemoveSlice(words, i)
 			} else {
 				words[i] = word[:index]
-				fmt.Println(words[i])
-				fmt.Println(word[index:])
 				words = lib.Insert(words, i+1, word[index:])
 			}
 		}
