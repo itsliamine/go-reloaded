@@ -5,7 +5,6 @@ import (
 )
 
 func FileOpen(filename string) string {
-
 	content, err := os.ReadFile(filename)
 
 	if err != nil {

@@ -23,7 +23,6 @@ func Punc(filecontent string) string {
 					filecontent = lib.Insert(filecontent, i, ' ')
 				}
 			}
-
 		}
 	}
 
