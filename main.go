@@ -14,13 +14,17 @@ func main() {
 	}
 
 	filecontent := src.FileOpen(args[1])
-	fmt.Println(len(filecontent))
 	filecontent = src.Converting(filecontent)
 	filecontent = src.Letters(filecontent)
-	fmt.Println(len(filecontent))
 	filecontent = src.Punc(filecontent)
 	filecontent = src.Quote(filecontent)
 	filecontent = src.Vowel(filecontent)
+	if !src.FileOutput(filecontent, args[2]) {
+		fmt.Println("Couldn't save file")
+	}
 
+	fmt.Println("Output: ")
 	fmt.Println(filecontent)
+	fmt.Println()
+	fmt.Println("Content saved in file", args[2])
 }
