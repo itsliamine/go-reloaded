@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-
 	args := os.Args
 
 	if len(args) != 3 {
@@ -15,11 +14,13 @@ func main() {
 	}
 
 	filecontent := src.FileOpen(args[1])
+	fmt.Println(len(filecontent))
 	filecontent = src.Converting(filecontent)
 	filecontent = src.Letters(filecontent)
-	filecontent = src.Quotes(filecontent)
-	filecontent = src.Punctuation(filecontent)
-	filecontent = src.Vowels(filecontent)
+	fmt.Println(len(filecontent))
+	filecontent = src.Punc(filecontent)
+	filecontent = src.Quote(filecontent)
+	filecontent = src.Vowel(filecontent)
 
 	fmt.Println(filecontent)
 }
