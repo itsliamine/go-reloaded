@@ -1,6 +1,37 @@
 # Go Reloaded
 
-This program takes two file names as arguments. The content of the first file if formatted according to the rules. The second file is created with the name provided in the second argument and the formatted content is written in it.
+This program takes two file names as arguments. The content of the first file if formatted according to the rules. The second file is created with the name provided in the second argument and the formatted content is written in it. <br>
+The project is divided in steps : <br>
+* The [core](core) files are the main functions that format the string
+* The [utils](utils) files are mainly focused on string, array and char manipulation or types and base conversion.
+
+
+### Unit Test
+
+The **[Unit Test](main_test.go)** takes every sample in the root folder and executes every core function on them. To run it :
+
+```bash
+git clone https://zone01normandie.org/git/faoudia/go-reloaded.git
+cd go-reloaded
+go test -v
+```
+
+Expected output:
+
+```bash
+=== RUN   TestSample1
+--- PASS: TestSample1 (0.00s)
+=== RUN   TestSample2
+--- PASS: TestSample2 (0.00s)
+=== RUN   TestSample3
+--- PASS: TestSample3 (0.00s)
+=== RUN   TestSample4
+--- PASS: TestSample4 (0.00s)
+=== RUN   TestSample5
+--- PASS: TestSample5 (0.00s)
+PASS
+ok  	go-reloaded	0.002s
+```
 
 ### Core functions
 
