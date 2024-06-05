@@ -9,13 +9,13 @@ func Converting(s string) string {
 
 	words := lib.SplitWhiteSpaces(s)
 
-	for i, w := range words {
-		if lib.Contains(w, "(hex)") {
+	for i := 1; i < len(words); i++ {
+		if lib.Contains(words[i], "(hex)") {
 			words[i-1] = lib.HexConvert(words[i-1])
 			words = lib.RemoveSlice(words, i)
 		}
 
-		if lib.Contains(w, "(bin)") {
+		if lib.Contains(words[i], "(bin)") {
 			words[i-1] = lib.BinConvert(words[i-1])
 			words = lib.RemoveSlice(words, i)
 		}
