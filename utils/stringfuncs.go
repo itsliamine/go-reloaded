@@ -53,31 +53,18 @@ func Capitalize(s string) string {
 	return result
 }
 
-func Index(s string, toFind string) int {
-	n := len(toFind)
-	if n == 0 {
-		return 0
-	} else if n == 1 {
-		for i, l := range s {
-			if l == []rune(toFind)[0] {
-				return i
-			}
-		}
-	} else if n > len(s) {
-		return -1
-	} else if n == len(s) {
-		if toFind == s {
-			return 0
-		}
-		return -1
+func RemoveChar(s string, index int) string {
+	a := []rune(s)
+	a = append(a[:index], a[index+1:]...)
+	return string(a)
+}
+
+func Insert(s string, index int, value rune) string {
+	a := []rune(s)
+	if len(a) == index {
+		return string(append(a, value))
 	}
-	for i := 0; i < len(s); i++ {
-		if i == len(s)-len(toFind) {
-			return -1
-		}
-		if s[i:i+len(toFind)] == toFind {
-			return i
-		}
-	}
-	return -1
+	a = append(a[:index+1], a[index:]...)
+	a[index] = value
+	return string(a)
 }

@@ -1,6 +1,6 @@
 package lib
 
-func Insert(a []string, index int, value string) []string {
+func InsertTable(a []string, index int, value string) []string {
 	if len(a) == index { // nil or empty slice or after last element
 		return append(a, value)
 	}
