@@ -53,7 +53,11 @@ func Letters(s string) string {
 		}
 	}
 
-	for _, w := range words {
+	for i, w := range words {
+		if i == len(words)-1 {
+			str += w
+			break
+		}
 		str += w + " "
 	}
 
