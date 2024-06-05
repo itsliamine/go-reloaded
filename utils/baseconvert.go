@@ -15,7 +15,11 @@ func HexConvert(s string) string {
 	power := 0
 	for i := len(s) - 1; i >= 0; i-- {
 		if IsLetter(s[i]) {
-			result += int(s[i]-38) * RecursivePower(16, power)
+			if IsLower(s[i]) {
+				result += int(s[i]-87) * RecursivePower(16, power)
+			} else {
+				result += int(s[i]-38) * RecursivePower(16, power)
+			}
 		} else {
 			result += int(s[i]-48) * (RecursivePower(16, power))
 		}
