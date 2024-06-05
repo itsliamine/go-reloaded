@@ -1,45 +1,26 @@
 package core
 
-import (
-	lib "go-reloaded/utils"
-)
+import lib "go-reloaded/utils"
 
-func Quotes(s string) string {
-	str := ""
-	words := lib.SplitWhiteSpaces(s)
-
+func Quote(filecontent string) string {
 	quoteBeginning := -1
-
-	for i, word := range words {
-		if word == "'" {
+	for i := 0; i < len(filecontent); i++ {
+		char := string(filecontent[i])
+		if char == "'" {
 			if quoteBeginning == -1 {
+				if i < len(filecontent)-1 {
+					if filecontent[i+1] == ' ' {
+						filecontent = lib.RemoveChar(filecontent, i+1)
+					}
+				}
 				quoteBeginning = i
-				words[i+1] = "'" + words[i+1]
-				words = lib.RemoveSlice(words, i)
-			} else {
-				words[i-1] += word
-				words = lib.RemoveSlice(words, i)
-				quoteBeginning = -1
-			}
-		} else if len(word) > 1 && lib.Contains(word[1:len(word)-1], "'") {
-			index := lib.Index(word, "'")
-			if quoteBeginning != -1 {
-				words[i-1] += word
-				words = lib.RemoveSlice(words, i)
-			} else {
-				words[i] = word[:index]
-				words = lib.Insert(words, i+1, word[index:])
+			} else if quoteBeginning != -1 {
+				if filecontent[i-1] == ' ' {
+					filecontent = lib.RemoveChar(filecontent, i-1)
+					quoteBeginning = -1
+				}
 			}
 		}
 	}
-
-	for i, w := range words {
-		if i == len(words)-1 {
-			str += w
-			break
-		}
-		str += w + " "
-	}
-
-	return str
+	return filecontent
 }

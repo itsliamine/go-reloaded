@@ -1,26 +1,15 @@
 package core
 
-import (
-	lib "go-reloaded/utils"
-)
+import lib "go-reloaded/utils"
 
-func Vowels(s string) string {
-	str := ""
-	words := lib.SplitWhiteSpaces(s)
-
-	for i, word := range words {
-		if word == "a" && lib.IsVowel(words[i+1][0]) {
-			words[i] = "an"
+func Vowel(filecontent string) string {
+	for i := 0; i < len(filecontent); i++ {
+		char := string(filecontent[i])
+		if char == "a" {
+			if string(filecontent[i+1]) == " " && lib.IsVowel(filecontent[i+2]) {
+				filecontent = lib.Insert(filecontent, i+1, 'n')
+			}
 		}
 	}
-
-	for i, w := range words {
-		if i == len(words)-1 {
-			str += w
-			break
-		}
-		str += w + " "
-	}
-
-	return str
+	return filecontent
 }
